@@ -1,0 +1,119 @@
+{
+  "description": "Пример конфигурационного файла для Lorentzian Classification Backtester",
+  
+  "static_params": {
+    "exchange": "bybit",
+    "max_bars_back": 5000,
+    "additional_bars": 500,
+    "regime_threshold": -1.0,
+    "ema_period": 120,
+    "sma_period": 120,
+    "adx_threshold": 20,
+    "kernel_smoothing_lag": 2,
+    
+    "indicators_config": {
+      "RSI": {
+        "parameter_a": 14,
+        "parameter_b": 1
+      },
+      "WT": {
+        "parameter_a": 10,
+        "parameter_b": 11
+      },
+      "CCI": {
+        "parameter_a": 20,
+        "parameter_b": 1
+      },
+      "ADX": {
+        "parameter_a": 20,
+        "parameter_b": 2
+      },
+      "RSI_FAST": {
+        "parameter_a": 9,
+        "parameter_b": 1
+      }
+    }
+  },
+  
+  "dynamic_params": {
+    "neighbors_count": 12,
+    "use_volatility_filter": true,
+    "use_regime_filter": true,
+    "use_ema_filter": false,
+    "use_sma_filter": false,
+    "use_adx_filter": true,
+    "kernel_lookback": 16,
+    "kernel_relative_weighting": 8,
+    "kernel_regression_level": 25,
+    "use_kernel_smoothing": false,
+    "use_dynamic_exits": true
+  },
+  
+  "param_grid": {
+    "_comment": "Используется только для режима optimize с grid search",
+    "neighbors_count": [8, 10, 12, 14, 16],
+    "use_volatility_filter": [true, false],
+    "use_regime_filter": [true],
+    "use_ema_filter": [false],
+    "use_sma_filter": [false],
+    "use_adx_filter": [true, false],
+    "kernel_lookback": [8, 12, 16, 20, 24],
+    "kernel_relative_weighting": [8, 12, 16],
+    "kernel_regression_level": [25, 35],
+    "use_kernel_smoothing": [false],
+    "use_dynamic_exits": [true, false]
+  },
+  
+  "backtest_settings": {
+    "initial_capital": 10000.0,
+    "position_size": 0.1,
+    "commission": 0.0006,
+    "slippage": 0.0001
+  },
+  
+  "optimization_settings": {
+    "metric": "composite",
+    "n_jobs": -1,
+    "top_n_results": 10
+  },
+  
+  "walk_forward_settings": {
+    "window_size": 1000,
+    "step_size": 500,
+    "optimization_window": 2000
+  },
+  
+  "supported_exchanges": [
+    "binance",
+    "bybit",
+    "okx",
+    "kucoin",
+    "gate",
+    "huobi",
+    "bitget",
+    "mexc"
+  ],
+  
+  "supported_timeframes": {
+    "1m": "1 минута",
+    "5m": "5 минут",
+    "15m": "15 минут",
+    "30m": "30 минут",
+    "1h": "1 час",
+    "4h": "4 часа",
+    "1d": "1 день"
+  },
+  
+  "recommended_pairs": [
+    "BTC/USDT",
+    "ETH/USDT",
+    "BNB/USDT",
+    "SOL/USDT",
+    "ADA/USDT",
+    "AVAX/USDT",
+    "MATIC/USDT",
+    "DOT/USDT",
+    "LINK/USDT",
+    "UNI/USDT"
+  ]
+}
