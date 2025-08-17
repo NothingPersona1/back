@@ -13,7 +13,7 @@
     
     "indicators_config": {
       "RSI": {
-        "parameter_a": 14,
+        "parameter_a": 12,
         "parameter_b": 1
       },
       "WT": {
@@ -21,7 +21,7 @@
         "parameter_b": 11
       },
       "CCI": {
-        "parameter_a": 20,
+        "parameter_a": 22,
         "parameter_b": 1
       },
       "ADX": {
@@ -29,20 +29,20 @@
         "parameter_b": 2
       },
       "RSI_FAST": {
-        "parameter_a": 9,
+        "parameter_a": 8,
         "parameter_b": 1
       }
     }
   },
   
   "dynamic_params": {
-    "neighbors_count": 12,
+    "neighbors_count": 8,
     "use_volatility_filter": true,
     "use_regime_filter": true,
     "use_ema_filter": false,
     "use_sma_filter": false,
     "use_adx_filter": true,
-    "kernel_lookback": 16,
+    "kernel_lookback": 8,
     "kernel_relative_weighting": 8,
     "kernel_regression_level": 25,
     "use_kernel_smoothing": false,
@@ -51,30 +51,30 @@
   
   "param_grid": {
     "_comment": "Используется только для режима optimize с grid search",
-    "neighbors_count": [8, 10, 12, 14, 16],
-    "use_volatility_filter": [true, false],
+    "neighbors_count": [8],
+    "use_volatility_filter": [true],
     "use_regime_filter": [true],
-    "use_ema_filter": [false],
+    "use_ema_filter": [true, false],
     "use_sma_filter": [false],
     "use_adx_filter": [true, false],
-    "kernel_lookback": [8, 12, 16, 20, 24],
-    "kernel_relative_weighting": [8, 12, 16],
-    "kernel_regression_level": [25, 35],
-    "use_kernel_smoothing": [false],
+    "kernel_lookback": [8, 12],
+    "kernel_relative_weighting": [8, 12],
+    "kernel_regression_level": [25],
+    "use_kernel_smoothing": [true],
     "use_dynamic_exits": [true, false]
   },
   
   "backtest_settings": {
     "initial_capital": 10000.0,
     "position_size": 0.1,
-    "commission": 0.0006,
+    "commission": 0.00001,
     "slippage": 0.0001
   },
   
   "optimization_settings": {
     "metric": "composite",
     "n_jobs": -1,
-    "top_n_results": 10
+    "top_n_results": 2
   },
   
   "walk_forward_settings": {
